@@ -247,7 +247,7 @@
   var aktifKategori = 'cave';
   var veriler = { cave: [], essentials: [] };
   function veriYukle(kat) {
-    fetch(FIREBASE_URL + '/' + kat + '.json')
+    fetch(FIREBASE_URL + '/' + (kat === 'cave' ? 'urunler' : kat) + '.json')
       .then(function(res) { return res.json(); })
       .then(function(data) { veriler[kat] = (data && Array.isArray(data)) ? data : []; render(kat); })
       .catch(function() { document.getElementById('lastUpdated').textContent = 'Bağlantı hatası!'; });
