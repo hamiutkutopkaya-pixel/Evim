@@ -19,9 +19,7 @@
     --peach: #9ECAE8;
     --border: rgba(255,255,255,0.7);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'DM Sans', sans-serif;
     background: #F4F7FA;
@@ -30,8 +28,6 @@
     min-height: 100vh;
     padding: 40px 24px;
   }
-
-  /* Kırık beyaz + mavi tonlu gradient arka plan */
   body::before {
     content: '';
     position: fixed;
@@ -45,43 +41,9 @@
     z-index: 0;
     animation: bgShift 14s ease-in-out infinite alternate;
   }
-
-  @keyframes bgShift {
-    0% { opacity: 1; }
-    50% { opacity: 0.55; }
-    100% { opacity: 1; }
-  }
-
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* HEADER */
-  header {
-    margin-bottom: 48px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .header-left h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -1px;
-  }
-
-  .header-left h1 span {
-    display: none;
-  }
-
-  /* AHŞAP TABELA */
+  @keyframes bgShift { 0% { opacity: 1; } 50% { opacity: 0.55; } 100% { opacity: 1; } }
+  .container { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  header { margin-bottom: 48px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   .tabela {
     display: inline-block;
     position: relative;
@@ -91,696 +53,110 @@
     padding: 18px 36px 20px;
     transform: rotate(-2.5deg);
     letter-spacing: 0.06em;
-    margin-left: 0;
-    top: 0;
-
-    /* Ahşap doku efekti */
     background:
-      repeating-linear-gradient(
-        92deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.03) 2px,
-        rgba(0,0,0,0.03) 4px
-      ),
-      repeating-linear-gradient(
-        180deg,
-        transparent,
-        transparent 8px,
-        rgba(0,0,0,0.02) 8px,
-        rgba(0,0,0,0.02) 9px
-      ),
+      repeating-linear-gradient(92deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+      repeating-linear-gradient(180deg, transparent, transparent 8px, rgba(0,0,0,0.02) 8px, rgba(0,0,0,0.02) 9px),
       linear-gradient(135deg, #C8902A 0%, #A97020 25%, #C8902A 50%, #B07828 75%, #C49030 100%);
-
-    /* Kırık kenar efekti — clip-path ile */
-    clip-path: polygon(
-      2% 4%, 5% 0%, 12% 2%, 20% 0%, 28% 3%, 35% 0%, 44% 2%, 52% 0%, 60% 2%, 68% 0%, 76% 2%, 84% 0%, 92% 3%, 97% 0%, 100% 4%,
-      98% 15%, 100% 30%, 97% 50%, 100% 68%, 98% 82%, 100% 96%,
-      96% 100%, 88% 97%, 80% 100%, 72% 98%, 64% 100%, 56% 97%, 48% 100%, 40% 98%, 32% 100%, 24% 97%, 16% 100%, 8% 98%, 3% 100%, 0% 96%,
-      2% 82%, 0% 68%, 3% 50%, 0% 30%, 2% 15%
-    );
-
-    box-shadow:
-      4px 6px 16px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -2px 0 rgba(0,0,0,0.15);
-
+    clip-path: polygon(2% 4%, 5% 0%, 12% 2%, 20% 0%, 28% 3%, 35% 0%, 44% 2%, 52% 0%, 60% 2%, 68% 0%, 76% 2%, 84% 0%, 92% 3%, 97% 0%, 100% 4%, 98% 15%, 100% 30%, 97% 50%, 100% 68%, 98% 82%, 100% 96%, 96% 100%, 88% 97%, 80% 100%, 72% 98%, 64% 100%, 56% 97%, 48% 100%, 40% 98%, 32% 100%, 24% 97%, 16% 100%, 8% 98%, 3% 100%, 0% 96%, 2% 82%, 0% 68%, 3% 50%, 0% 30%, 2% 15%);
+    box-shadow: 4px 6px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0,0,0,0.15);
     text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
-    border: none;
   }
-
-  .header-left p {
-    display: none;
-  }
-
-  .last-updated {
-    font-size: 0.8rem;
-    color: var(--muted);
-    background: rgba(255,255,255,0.7);
-    border: 1.5px solid rgba(255,255,255,0.8);
-    border-radius: 999px;
-    padding: 6px 14px;
-    backdrop-filter: blur(8px);
-  }
-
-  /* STAT CARDS */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .stat-card {
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 20px;
-    padding: 24px;
-    border: 1.5px solid rgba(255,255,255,0.8);
-    box-shadow: 0 4px 24px rgba(180,160,220,0.1);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: fadeUp 0.5s ease both;
-  }
-
-  .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(180,160,220,0.2);
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    right: -30px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    opacity: 0.2;
-  }
-
-  .stat-card.coral { border-color: rgba(100,170,220,0.4); }
-  .stat-card.coral::before { background: #5BA8D4; }
-  .stat-card.coral .stat-icon { background: rgba(100,170,220,0.15); color: #2E6FAF; }
-  .stat-card.coral .stat-value { color: #2E6FAF; }
-
-  .stat-card.mint { border-color: rgba(80,160,215,0.4); }
-  .stat-card.mint::before { background: #4A9FD0; }
-  .stat-card.mint .stat-icon { background: rgba(80,160,215,0.15); color: #2A7FAF; }
-  .stat-card.mint .stat-value { color: #2A7FAF; }
-
-  .stat-card.sun { border-color: rgba(120,185,230,0.4); }
-  .stat-card.sun::before { background: #6AABD8; }
-  .stat-card.sun .stat-icon { background: rgba(120,185,230,0.15); color: #3A85C0; }
-  .stat-card.sun .stat-value { color: #3A85C0; }
-
-  .stat-card.sky { border-color: rgba(60,130,195,0.4); }
-  .stat-card.sky::before { background: #3A7FBF; }
-  .stat-card.sky .stat-icon { background: rgba(60,130,195,0.15); color: #1E5FA0; }
-  .stat-card.sky .stat-value { color: #1E5FA0; }
-
-  .stat-card.lavender { border-color: rgba(140,200,235,0.4); }
-  .stat-card.lavender::before { background: #7EBFE0; }
-  .stat-card.lavender .stat-icon { background: rgba(140,200,235,0.15); color: #3A8FC5; }
-  .stat-card.lavender .stat-value { color: #3A8FC5; }
-
-  .stat-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    margin-bottom: 16px;
-  }
-
-  .stat-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-
-  .stat-value {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .stat-sub {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* İLERLEME ÇUBUĞU */
-  .progress-section {
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 20px;
-    padding: 28px;
-    border: 1.5px solid rgba(255,255,255,0.8);
-    box-shadow: 0 4px 24px rgba(180,160,220,0.1);
-    margin-bottom: 24px;
-    animation: fadeUp 0.5s ease 0.2s both;
-  }
-
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  .progress-header h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-
-  .progress-pct {
-    font-family: 'Fraunces', serif;
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: #2E6FAF;
-  }
-
-  .progress-track {
-    background: rgba(100,170,220,0.15);
-    border-radius: 999px;
-    height: 18px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #5BACE0, #2E6FAF);
-    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-  }
-
-  .progress-fill::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: shimmer 2s infinite;
-  }
-
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-
-  .progress-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-
-  /* ÜRÜN LİSTESİ */
-  .products-section {
-    animation: fadeUp 0.5s ease 0.3s both;
-  }
-
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .section-title span {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: rgba(249,207,127,0.5);
-    color: #8B6800;
-    padding: 3px 10px;
-    border-radius: 999px;
-  }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .product-card {
-    background: rgba(255,255,255,0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 20px;
-    border: 1.5px solid rgba(255,255,255,0.8);
-    box-shadow: 0 4px 20px rgba(180,160,220,0.1);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-  }
-
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 40px rgba(180,160,220,0.2);
-  }
-
-  .product-card.alindi {
-    border-color: rgba(125,212,192,0.5);
-  }
-
-  .product-card.alindi::after {
-    content: '✓';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #7DD4C0;
-    color: white;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    z-index: 2;
-  }
-
-  .product-img {
-    width: 100%;
-    height: 160px;
-    object-fit: contain;
-    background: #F8F5F0;
-    padding: 16px;
-  }
-
-  .product-img-placeholder {
-    width: 100%;
-    height: 160px;
-    background: linear-gradient(135deg, #F8F5F0, #EDE8DF);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-  }
-
-  .product-body {
-    padding: 16px;
-  }
-
-  .product-name {
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .product-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
-  }
-
-  .product-price {
-    font-family: 'Fraunces', serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .product-status {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-
-  .status-alindi {
-    background: #EDFFF9;
-    color: #05B889;
-  }
-
-  .status-alinmadi {
-    background: #FFF5E6;
-    color: #E07B00;
-  }
-
-  .product-link {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.78rem;
-    color: var(--sky);
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .product-link:hover { text-decoration: underline; }
-
-  /* GÖRSEL EKLE BUTONU */
-  .gorsel-ekle-btn {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    padding: 7px;
-    background: #F8F5F0;
-    border: 1.5px dashed var(--border);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .gorsel-ekle-btn:hover { background: #F0EBE0; color: var(--ink); border-color: #C8BFB0; }
-  .gorsel-degistir-btn {
-    display: block;
-    width: 100%;
-    padding: 6px;
-    background: transparent;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.72rem;
-    color: var(--muted);
-    cursor: pointer;
-    text-align: center;
-    transition: color 0.2s;
-  }
-  .gorsel-degistir-btn:hover { color: var(--coral); }
-
-  /* EDIT PANEL */
-  .edit-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: linear-gradient(135deg, #2E6FAF, #5BACE0);
-    color: white;
-    border: none;
-    border-radius: 999px;
-    padding: 14px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(46,111,175,0.3);
-    transition: transform 0.2s;
-    z-index: 100;
-  }
-
-  .edit-toggle:hover { transform: scale(1.05); }
-
-  .edit-panel {
-    display: none;
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1.5px solid rgba(255,255,255,0.9);
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 32px;
-    animation: fadeUp 0.3s ease;
-  }
-
-  .edit-panel.open { display: block; }
-
-  .edit-panel h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-  }
-
-  .edit-panel textarea {
-    width: 100%;
-    height: 220px;
-    font-family: 'DM Sans', monospace;
-    font-size: 0.82rem;
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .edit-panel textarea:focus { border-color: var(--sky); }
-
-  .edit-panel button {
-    margin-top: 12px;
-    background: linear-gradient(135deg, #2E6FAF, #5BACE0);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-
-  .edit-panel button:hover { opacity: 0.85; }
-
-  .edit-hint {
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 8px;
-  }
-
-  /* ÜRÜN FORMU */
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-group.full { grid-column: 1 / -1; }
-
-  .form-group label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .form-group input, .form-group select {
-    padding: 10px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    background: rgba(255,255,255,0.8);
-    color: var(--ink);
-    transition: border-color 0.2s;
-  }
-
-  .form-group input:focus, .form-group select:focus {
-    border-color: #C084C0;
-  }
-
-  .form-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #2E6FAF, #5BACE0);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 11px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-
-  .btn-primary:hover { opacity: 0.85; }
-
-  .btn-secondary {
-    background: rgba(255,255,255,0.7);
-    color: var(--muted);
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 11px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .btn-secondary:hover { color: var(--ink); }
-
-  /* ÜRÜN LİSTESİ (DÜZENLENEBİLİR) */
-  .urun-listesi {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .urun-satir {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.6);
-    border: 1.5px solid rgba(255,255,255,0.8);
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-size: 0.88rem;
-  }
-
-  .urun-satir-ad { flex: 1; font-weight: 600; }
-  .urun-satir-fiyat { color: var(--muted); min-width: 80px; text-align: right; }
-  .urun-satir-durum {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 999px;
-    min-width: 80px;
-    text-align: center;
-  }
-
-  .urun-satir-sil {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #F4A7B9;
-    padding: 2px 6px;
-    border-radius: 8px;
-    transition: background 0.2s;
-  }
-
-  .urun-satir-sil:hover { background: rgba(244,167,185,0.2); }
-
-  .panel-tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .panel-tab {
-    padding: 8px 18px;
-    border-radius: 999px;
-    border: 1.5px solid var(--border);
-    background: rgba(255,255,255,0.5);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--muted);
-    transition: all 0.2s;
-  }
-
-  .panel-tab.aktif {
-    background: linear-gradient(135deg, #2E6FAF, #5BACE0);
-    color: white;
-    border-color: transparent;
-  }
-
-  .panel-icerik { display: none; }
-  .panel-icerik.aktif { display: block; }
-
-  /* KATEGORİ SEKMELERİ */
-  .kategori-tabs {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-
-  .kategori-tab {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.15rem;
-    padding: 12px 28px;
-    border-radius: 999px;
-    border: 2px solid rgba(46,111,175,0.3);
-    background: rgba(255,255,255,0.5);
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.25s;
-    letter-spacing: 0.04em;
-    backdrop-filter: blur(8px);
-  }
-
-  .kategori-tab:hover {
-    background: rgba(255,255,255,0.75);
-    color: var(--ink);
-  }
-
-  .kategori-tab.aktif {
-    background: linear-gradient(135deg, #2E6FAF, #5BACE0);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 6px 20px rgba(46,111,175,0.3);
-  }
-
+  .last-updated { font-size: 0.8rem; color: var(--muted); background: rgba(255,255,255,0.7); border: 1.5px solid rgba(255,255,255,0.8); border-radius: 999px; padding: 6px 14px; backdrop-filter: blur(8px); }
+  .kategori-tabs { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+  .kategori-tab { font-family: 'Permanent Marker', cursive; font-size: 1.15rem; padding: 12px 28px; border-radius: 999px; border: 2px solid rgba(46,111,175,0.3); background: rgba(255,255,255,0.5); color: var(--muted); cursor: pointer; transition: all 0.25s; letter-spacing: 0.04em; backdrop-filter: blur(8px); }
+  .kategori-tab:hover { background: rgba(255,255,255,0.75); color: var(--ink); }
+  .kategori-tab.aktif { background: linear-gradient(135deg, #2E6FAF, #5BACE0); color: white; border-color: transparent; box-shadow: 0 6px 20px rgba(46,111,175,0.3); }
   .kategori-icerik { display: none; }
   .kategori-icerik.aktif { display: block; animation: fadeUp 0.3s ease; }
-
-  .divider {
-    height: 2px;
-    background: var(--border);
-    border-radius: 999px;
-    margin: 32px 0;
-  }
-
-  @media (max-width: 600px) {
-    body { padding: 24px 16px; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
-    .products-grid { grid-template-columns: 1fr; }
-  }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: rgba(255,255,255,0.65); backdrop-filter: blur(16px); border-radius: 20px; padding: 24px; border: 1.5px solid rgba(255,255,255,0.8); box-shadow: 0 4px 24px rgba(180,160,220,0.1); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; animation: fadeUp 0.5s ease both; }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(180,160,220,0.2); }
+  .stat-card::before { content: ''; position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; opacity: 0.2; }
+  .stat-card.coral { border-color: rgba(100,170,220,0.4); } .stat-card.coral::before { background: #5BA8D4; } .stat-card.coral .stat-icon { background: rgba(100,170,220,0.15); color: #2E6FAF; } .stat-card.coral .stat-value { color: #2E6FAF; }
+  .stat-card.mint { border-color: rgba(80,160,215,0.4); } .stat-card.mint::before { background: #4A9FD0; } .stat-card.mint .stat-icon { background: rgba(80,160,215,0.15); color: #2A7FAF; } .stat-card.mint .stat-value { color: #2A7FAF; }
+  .stat-card.sun { border-color: rgba(120,185,230,0.4); } .stat-card.sun::before { background: #6AABD8; } .stat-card.sun .stat-icon { background: rgba(120,185,230,0.15); color: #3A85C0; } .stat-card.sun .stat-value { color: #3A85C0; }
+  .stat-card.sky { border-color: rgba(60,130,195,0.4); } .stat-card.sky::before { background: #3A7FBF; } .stat-card.sky .stat-icon { background: rgba(60,130,195,0.15); color: #1E5FA0; } .stat-card.sky .stat-value { color: #1E5FA0; }
+  .stat-card.lavender { border-color: rgba(140,200,235,0.4); } .stat-card.lavender::before { background: #7EBFE0; } .stat-card.lavender .stat-icon { background: rgba(140,200,235,0.15); color: #3A8FC5; } .stat-card.lavender .stat-value { color: #3A8FC5; }
+  .stat-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; }
+  .stat-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+  .stat-value { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .stat-sub { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .progress-section { background: rgba(255,255,255,0.65); backdrop-filter: blur(16px); border-radius: 20px; padding: 28px; border: 1.5px solid rgba(255,255,255,0.8); box-shadow: 0 4px 24px rgba(180,160,220,0.1); margin-bottom: 24px; animation: fadeUp 0.5s ease 0.2s both; }
+  .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .progress-header h2 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; }
+  .progress-pct { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 900; color: #2E6FAF; }
+  .progress-track { background: rgba(100,170,220,0.15); border-radius: 999px; height: 18px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #5BACE0, #2E6FAF); transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; }
+  .progress-fill::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shimmer 2s infinite; }
+  @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  .progress-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--muted); }
+  .products-section { animation: fadeUp 0.5s ease 0.3s both; }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-title span { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; background: rgba(249,207,127,0.5); color: #8B6800; padding: 3px 10px; border-radius: 999px; }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .product-card { background: rgba(255,255,255,0.65); backdrop-filter: blur(16px); border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.8); box-shadow: 0 4px 20px rgba(180,160,220,0.1); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(180,160,220,0.2); }
+  .product-card.alindi { border-color: rgba(125,212,192,0.5); }
+  .product-card.alindi::after { content: '✓'; position: absolute; top: 12px; right: 12px; background: #7DD4C0; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; z-index: 2; }
+  .product-img { width: 100%; height: 160px; object-fit: contain; background: #F8F5F0; padding: 16px; }
+  .product-img-placeholder { width: 100%; height: 160px; background: linear-gradient(135deg, #F8F5F0, #EDE8DF); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+  .product-body { padding: 16px; }
+  .product-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; line-height: 1.3; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+  .product-price { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+  .product-status { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .status-alindi { background: #EDFFF9; color: #05B889; }
+  .status-alinmadi { background: #FFF5E6; color: #E07B00; }
+  .product-link { display: block; margin-top: 10px; font-size: 0.78rem; color: var(--sky); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .product-link:hover { text-decoration: underline; }
+  .gorsel-ekle-btn { display: block; width: 100%; margin-top: 10px; padding: 7px; background: #F8F5F0; border: 1.5px dashed var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--muted); cursor: pointer; transition: all 0.2s; text-align: center; }
+  .gorsel-ekle-btn:hover { background: #F0EBE0; color: var(--ink); }
+  .gorsel-degistir-btn { display: block; width: 100%; padding: 6px; background: transparent; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: var(--muted); cursor: pointer; text-align: center; transition: color 0.2s; }
+  .gorsel-degistir-btn:hover { color: #5BACE0; }
+  .edit-toggle { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #2E6FAF, #5BACE0); color: white; border: none; border-radius: 999px; padding: 14px 22px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; box-shadow: 0 8px 24px rgba(46,111,175,0.3); transition: transform 0.2s; z-index: 100; }
+  .edit-toggle:hover { transform: scale(1.05); }
+  .edit-panel { display: none; background: rgba(255,255,255,0.8); backdrop-filter: blur(16px); border: 1.5px solid rgba(255,255,255,0.9); border-radius: 20px; padding: 24px; margin-bottom: 32px; animation: fadeUp 0.3s ease; }
+  .edit-panel.open { display: block; }
+  .edit-panel h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; margin-bottom: 16px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-group input, .form-group select { padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; background: rgba(255,255,255,0.8); color: var(--ink); transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus { border-color: #5BACE0; }
+  .form-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, #2E6FAF, #5BACE0); color: white; border: none; border-radius: 12px; padding: 11px 22px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary { background: rgba(255,255,255,0.7); color: var(--muted); border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 22px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-secondary:hover { color: var(--ink); }
+  .urun-listesi { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .urun-satir { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.6); border: 1.5px solid rgba(255,255,255,0.8); border-radius: 12px; padding: 10px 14px; font-size: 0.88rem; }
+  .urun-satir-ad { flex: 1; font-weight: 600; }
+  .urun-satir-fiyat { color: var(--muted); min-width: 80px; text-align: right; }
+  .urun-satir-durum { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; min-width: 80px; text-align: center; }
+  .urun-satir-sil { background: none; border: none; cursor: pointer; font-size: 1rem; color: #F4A7B9; padding: 2px 6px; border-radius: 8px; transition: background 0.2s; }
+  .urun-satir-sil:hover { background: rgba(244,167,185,0.2); }
+  .panel-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+  .panel-tab { padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--border); background: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--muted); transition: all 0.2s; }
+  .panel-tab.aktif { background: linear-gradient(135deg, #2E6FAF, #5BACE0); color: white; border-color: transparent; }
+  .panel-icerik { display: none; }
+  .panel-icerik.aktif { display: block; }
+  .divider { height: 2px; background: var(--border); border-radius: 999px; margin: 32px 0; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { body { padding: 24px 16px; } .stats-grid { grid-template-columns: 1fr 1fr; } .products-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-
 <div class="container">
-
-  <!-- HEADER -->
   <header>
-    <div class="header-left">
-      <span class="tabela">HUT's Cave</span>
-    </div>
+    <div class="header-left"><span class="tabela">HUT's Cave</span></div>
     <div class="last-updated" id="lastUpdated">—</div>
   </header>
-
-  <!-- KATEGORİ SEKMELERİ -->
   <div class="kategori-tabs">
     <button class="kategori-tab aktif" onclick="kategoriAc('cave', this)">🕹 HUT's Cave</button>
     <button class="kategori-tab" onclick="kategoriAc('essentials', this)">📦 HUT's Essentials</button>
   </div>
-
-  <!-- CAVE İÇERİĞİ -->
   <div class="kategori-icerik aktif" id="kat-cave">
-
     <div class="edit-panel" id="editPanel-cave">
       <h3>✏️ Cave Ürünlerini Yönet</h3>
       <div class="panel-tabs">
@@ -804,7 +180,6 @@
         <div class="urun-listesi" id="urunListesi-cave"></div>
       </div>
     </div>
-
     <div class="stats-grid">
       <div class="stat-card coral"><div class="stat-icon">💰</div><div class="stat-label">Toplam Maliyet</div><div class="stat-value" id="cave-statToplam">—</div><div class="stat-sub">tüm ürünler</div></div>
       <div class="stat-card mint"><div class="stat-icon">✅</div><div class="stat-label">Harcanan</div><div class="stat-value" id="cave-statHarcanan">—</div><div class="stat-sub">alınan ürünler</div></div>
@@ -812,24 +187,18 @@
       <div class="stat-card sky"><div class="stat-icon">📦</div><div class="stat-label">Alınan</div><div class="stat-value" id="cave-statAlinan">—</div><div class="stat-sub">ürün</div></div>
       <div class="stat-card lavender"><div class="stat-icon">⏳</div><div class="stat-label">Bekleyen</div><div class="stat-value" id="cave-statBekleyen">—</div><div class="stat-sub">ürün kaldı</div></div>
     </div>
-
     <div class="progress-section">
       <div class="progress-header"><h2>🕹 Cave Tamamlanma</h2><div class="progress-pct" id="cave-progressPct">0%</div></div>
       <div class="progress-track"><div class="progress-fill" id="cave-progressFill" style="width:0%"></div></div>
       <div class="progress-labels"><span id="cave-progressLeft">Henüz başlamadın!</span><span>Hedefe az kaldı 🎉</span></div>
     </div>
-
     <div class="divider"></div>
-
     <div class="products-section">
       <div class="section-title">Ürün Listesi <span id="cave-productCount">0 ürün</span></div>
       <div class="products-grid" id="productsGrid-cave"></div>
     </div>
   </div>
-
-  <!-- ESSENTIALS İÇERİĞİ -->
   <div class="kategori-icerik" id="kat-essentials">
-
     <div class="edit-panel" id="editPanel-essentials">
       <h3>✏️ Essentials Ürünlerini Yönet</h3>
       <div class="panel-tabs">
@@ -853,7 +222,6 @@
         <div class="urun-listesi" id="urunListesi-essentials"></div>
       </div>
     </div>
-
     <div class="stats-grid">
       <div class="stat-card coral"><div class="stat-icon">💰</div><div class="stat-label">Toplam Maliyet</div><div class="stat-value" id="essentials-statToplam">—</div><div class="stat-sub">tüm ürünler</div></div>
       <div class="stat-card mint"><div class="stat-icon">✅</div><div class="stat-label">Harcanan</div><div class="stat-value" id="essentials-statHarcanan">—</div><div class="stat-sub">alınan ürünler</div></div>
@@ -861,51 +229,32 @@
       <div class="stat-card sky"><div class="stat-icon">📦</div><div class="stat-label">Alınan</div><div class="stat-value" id="essentials-statAlinan">—</div><div class="stat-sub">ürün</div></div>
       <div class="stat-card lavender"><div class="stat-icon">⏳</div><div class="stat-label">Bekleyen</div><div class="stat-value" id="essentials-statBekleyen">—</div><div class="stat-sub">ürün kaldı</div></div>
     </div>
-
     <div class="progress-section">
       <div class="progress-header"><h2>📦 Essentials Tamamlanma</h2><div class="progress-pct" id="essentials-progressPct">0%</div></div>
       <div class="progress-track"><div class="progress-fill" id="essentials-progressFill" style="width:0%"></div></div>
       <div class="progress-labels"><span id="essentials-progressLeft">Henüz başlamadın!</span><span>Hedefe az kaldı 🎉</span></div>
     </div>
-
     <div class="divider"></div>
-
     <div class="products-section">
       <div class="section-title">Ürün Listesi <span id="essentials-productCount">0 ürün</span></div>
       <div class="products-grid" id="productsGrid-essentials"></div>
     </div>
   </div>
-
 </div>
-
-<!-- DÜZENLE BUTONU -->
-<button class="edit-toggle" id="editToggleBtn" onclick="toggleEdit(aktifKategori)">✏️ Ürünleri Düzenle</button>
-
+<button class="edit-toggle" onclick="toggleEdit(aktifKategori)">✏️ Ürünleri Düzenle</button>
 <script>
   var FIREBASE_URL = 'https://evim-f89e8-default-rtdb.europe-west1.firebasedatabase.app';
   var aktifKategori = 'cave';
   var veriler = { cave: [], essentials: [] };
-
   function veriYukle(kat) {
     fetch(FIREBASE_URL + '/' + kat + '.json')
       .then(function(res) { return res.json(); })
-      .then(function(data) {
-        veriler[kat] = (data && Array.isArray(data)) ? data : [];
-        render(kat);
-      })
-      .catch(function() {
-        document.getElementById('lastUpdated').textContent = 'Bağlantı hatası!';
-      });
+      .then(function(data) { veriler[kat] = (data && Array.isArray(data)) ? data : []; render(kat); })
+      .catch(function() { document.getElementById('lastUpdated').textContent = 'Bağlantı hatası!'; });
   }
-
   function veriKaydet(kat) {
-    return fetch(FIREBASE_URL + '/' + kat + '.json', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(veriler[kat])
-    });
+    return fetch(FIREBASE_URL + '/' + kat + '.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(veriler[kat]) });
   }
-
   function kategoriAc(kat, btn) {
     aktifKategori = kat;
     document.querySelectorAll('.kategori-tab').forEach(function(el) { el.classList.remove('aktif'); });
@@ -915,9 +264,7 @@
     document.getElementById('editPanel-cave').classList.remove('open');
     document.getElementById('editPanel-essentials').classList.remove('open');
   }
-
   function para(sayi) { return sayi.toLocaleString('tr-TR') + ' ₺'; }
-
   function emojiSec(ad) {
     var k = ad.toLowerCase();
     if (k.includes('koltuk') || k.includes('kanepe')) return '🛋️';
@@ -931,58 +278,38 @@
     if (k.includes('halı') || k.includes('hali')) return '🧶';
     return '📦';
   }
-
   function render(kat) {
     var urunler = veriler[kat];
     var toplam = 0, harcanan = 0, kalan = 0, alinan = 0;
-    urunler.forEach(function(u) {
-      toplam += u.fiyat;
-      if (u.durum === 'Alındı') { harcanan += u.fiyat; alinan++; }
-      else { kalan += u.fiyat; }
-    });
-
+    urunler.forEach(function(u) { toplam += u.fiyat; if (u.durum === 'Alındı') { harcanan += u.fiyat; alinan++; } else { kalan += u.fiyat; } });
     document.getElementById(kat + '-statToplam').textContent = para(toplam);
     document.getElementById(kat + '-statHarcanan').textContent = para(harcanan);
     document.getElementById(kat + '-statKalan').textContent = para(kalan);
     document.getElementById(kat + '-statAlinan').textContent = alinan;
     document.getElementById(kat + '-statBekleyen').textContent = urunler.length - alinan;
     document.getElementById(kat + '-productCount').textContent = urunler.length + ' ürün';
-
     var pct = urunler.length > 0 ? Math.round((alinan / urunler.length) * 100) : 0;
     document.getElementById(kat + '-progressPct').textContent = pct + '%';
     setTimeout(function() { document.getElementById(kat + '-progressFill').style.width = pct + '%'; }, 100);
-    document.getElementById(kat + '-progressLeft').textContent =
-      pct === 0 ? 'Henüz başlamadın!' : pct === 100 ? 'Her şey tamam! 🎉' : alinan + ' ürün alındı';
-
+    document.getElementById(kat + '-progressLeft').textContent = pct === 0 ? 'Henüz başlamadın!' : pct === 100 ? 'Her şey tamam! 🎉' : alinan + ' ürün alındı';
     var grid = document.getElementById('productsGrid-' + kat);
     grid.innerHTML = '';
     urunler.forEach(function(u, idx) {
       var card = document.createElement('div');
       card.className = 'product-card' + (u.durum === 'Alındı' ? ' alindi' : '');
-      var imgHtml = u.gorsel
-        ? '<img class="product-img" src="' + u.gorsel + '" alt="' + u.ad + '" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">' +
-          '<div class="product-img-placeholder" style="display:none">' + emojiSec(u.ad) + '</div>'
-        : '<div class="product-img-placeholder">' + emojiSec(u.ad) + '</div>';
+      var imgHtml = u.gorsel ? '<img class="product-img" src="' + u.gorsel + '" alt="' + u.ad + '" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'"><div class="product-img-placeholder" style="display:none">' + emojiSec(u.ad) + '</div>' : '<div class="product-img-placeholder">' + emojiSec(u.ad) + '</div>';
       var linkHtml = u.link ? '<a class="product-link" href="' + u.link + '" target="_blank">🔗 Linke git</a>' : '';
-      var gorselBtn = u.gorsel
-        ? '<button class="gorsel-degistir-btn" onclick="gorselSec(\'' + kat + '\',' + idx + ')">🖼 Görseli değiştir</button>'
-        : '<button class="gorsel-ekle-btn" onclick="gorselSec(\'' + kat + '\',' + idx + ')">📷 Görsel ekle</button>';
-      card.innerHTML = imgHtml + '<div class="product-body"><div class="product-name">' + u.ad + '</div>' +
-        '<div class="product-footer"><div class="product-price">' + para(u.fiyat) + '</div>' +
-        '<span class="product-status status-' + (u.durum === 'Alındı' ? 'alindi' : 'alinmadi') + '">' + u.durum + '</span></div>' +
-        linkHtml + gorselBtn + '</div>';
+      var gorselBtn = u.gorsel ? '<button class="gorsel-degistir-btn" onclick="gorselSec(\'' + kat + '\',' + idx + ')">🖼 Görseli değiştir</button>' : '<button class="gorsel-ekle-btn" onclick="gorselSec(\'' + kat + '\',' + idx + ')">📷 Görsel ekle</button>';
+      card.innerHTML = imgHtml + '<div class="product-body"><div class="product-name">' + u.ad + '</div><div class="product-footer"><div class="product-price">' + para(u.fiyat) + '</div><span class="product-status status-' + (u.durum === 'Alındı' ? 'alindi' : 'alinmadi') + '">' + u.durum + '</span></div>' + linkHtml + gorselBtn + '</div>';
       grid.appendChild(card);
     });
-
     document.getElementById('lastUpdated').textContent = 'Güncellendi: ' + new Date().toLocaleDateString('tr-TR');
   }
-
   function toggleEdit(kat) {
     var panel = document.getElementById('editPanel-' + kat);
     panel.classList.toggle('open');
     if (panel.classList.contains('open')) urunListesiGuncelle(kat);
   }
-
   function sekmeAc(id, btn) {
     var kat = id.startsWith('cave') ? 'cave' : 'essentials';
     document.querySelectorAll('#editPanel-' + kat + ' .panel-icerik').forEach(function(el) { el.classList.remove('aktif'); });
@@ -991,21 +318,15 @@
     btn.classList.add('aktif');
     if (id.includes('listele')) urunListesiGuncelle(kat);
   }
-
   function urunListesiGuncelle(kat) {
     var liste = document.getElementById('urunListesi-' + kat);
     var urunler = veriler[kat];
     if (urunler.length === 0) { liste.innerHTML = '<p style="color:var(--muted);font-size:0.88rem;">Henüz ürün yok.</p>'; return; }
     liste.innerHTML = urunler.map(function(u, idx) {
       var dc = u.durum === 'Alındı' ? 'status-alindi' : 'status-alinmadi';
-      return '<div class="urun-satir">' +
-        '<span class="urun-satir-ad">' + u.ad + '</span>' +
-        '<span class="urun-satir-fiyat">' + para(u.fiyat) + '</span>' +
-        '<span class="urun-satir-durum product-status ' + dc + '" onclick="durumToggle(\'' + kat + '\',' + idx + ')" style="cursor:pointer">' + u.durum + '</span>' +
-        '<button class="urun-satir-sil" onclick="urunSil(\'' + kat + '\',' + idx + ')">🗑</button></div>';
+      return '<div class="urun-satir"><span class="urun-satir-ad">' + u.ad + '</span><span class="urun-satir-fiyat">' + para(u.fiyat) + '</span><span class="urun-satir-durum product-status ' + dc + '" onclick="durumToggle(\'' + kat + '\',' + idx + ')" style="cursor:pointer">' + u.durum + '</span><button class="urun-satir-sil" onclick="urunSil(\'' + kat + '\',' + idx + ')">🗑</button></div>';
     }).join('');
   }
-
   function urunEkle(kat) {
     var ad = document.getElementById(kat + '-yeniAd').value.trim();
     var fiyat = parseFloat(document.getElementById(kat + '-yeniFiyat').value) || 0;
@@ -1013,7 +334,6 @@
     var link = document.getElementById(kat + '-yeniLink').value.trim();
     var gorselInput = document.getElementById(kat + '-yeniGorsel');
     if (!ad) { alert('Ürün adı boş olamaz!'); return; }
-
     function kaydet(gorselData) {
       veriler[kat].push({ ad: ad, fiyat: fiyat, durum: durum, link: link, gorsel: gorselData || '' });
       veriKaydet(kat).then(function() {
@@ -1025,25 +345,21 @@
         document.getElementById('editPanel-' + kat).classList.remove('open');
       });
     }
-
     if (gorselInput.files && gorselInput.files[0]) {
       var reader = new FileReader();
       reader.onload = function(ev) { kaydet(ev.target.result); };
       reader.readAsDataURL(gorselInput.files[0]);
     } else { kaydet(''); }
   }
-
   function urunSil(kat, idx) {
     if (!confirm('"' + veriler[kat][idx].ad + '" silinsin mi?')) return;
     veriler[kat].splice(idx, 1);
     veriKaydet(kat).then(function() { render(kat); urunListesiGuncelle(kat); });
   }
-
   function durumToggle(kat, idx) {
     veriler[kat][idx].durum = veriler[kat][idx].durum === 'Alındı' ? 'Alınmadı' : 'Alındı';
     veriKaydet(kat).then(function() { render(kat); urunListesiGuncelle(kat); });
   }
-
   function gorselSec(kat, idx) {
     var input = document.createElement('input');
     input.type = 'file'; input.accept = 'image/*';
@@ -1051,247 +367,13 @@
       var dosya = e.target.files[0];
       if (!dosya) return;
       var reader = new FileReader();
-      reader.onload = function(ev) {
-        veriler[kat][idx].gorsel = ev.target.result;
-        veriKaydet(kat).then(function() { render(kat); });
-      };
+      reader.onload = function(ev) { veriler[kat][idx].gorsel = ev.target.result; veriKaydet(kat).then(function() { render(kat); }); };
       reader.readAsDataURL(dosya);
     };
     input.click();
   }
-
   veriYukle('cave');
   veriYukle('essentials');
-</script>
-</body>
-</html>
-
-  // Firebase'den veri çek
-  function veriYukle() {
-    document.getElementById('lastUpdated').textContent = 'Yükleniyor...';
-    fetch(FIREBASE_URL + '/urunler.json')
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        if (data && Array.isArray(data)) {
-          urunler = data;
-        } else {
-          urunler = [];
-        }
-        render();
-      })
-      .catch(function() {
-        document.getElementById('lastUpdated').textContent = 'Bağlantı hatası!';
-      });
-  }
-
-  // Firebase'e veri kaydet
-  function veriKaydet(veri) {
-    return fetch(FIREBASE_URL + '/urunler.json', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(veri)
-    });
-  }
-
-  // Para formatı
-  function para(sayi) {
-    return sayi.toLocaleString('tr-TR') + ' ₺';
-  }
-
-  // Emoji placeholder — ürün adına göre eğlenceli emoji seç
-  function emojiSec(ad) {
-    var kelime = ad.toLowerCase();
-    if (kelime.includes('koltuk') || kelime.includes('kanepe')) return '🛋️';
-    if (kelime.includes('yatak')) return '🛏️';
-    if (kelime.includes('masa')) return '🪑';
-    if (kelime.includes('tv') || kelime.includes('televizyon')) return '📺';
-    if (kelime.includes('buzdolabı') || kelime.includes('buzdolabi')) return '🧊';
-    if (kelime.includes('çamaşır') || kelime.includes('camasir')) return '🫧';
-    if (kelime.includes('oyun') || kelime.includes('joystick') || kelime.includes('direksiyon')) return '🎮';
-    if (kelime.includes('lamba') || kelime.includes('aydınlatma')) return '💡';
-    if (kelime.includes('halı') || kelime.includes('hali')) return '🧶';
-    return '📦';
-  }
-
-  function render() {
-    var toplam = 0, harcanan = 0, kalan = 0, alinan = 0;
-    urunler.forEach(function(u) {
-      toplam += u.fiyat;
-      if (u.durum === 'Alındı') { harcanan += u.fiyat; alinan++; }
-      else { kalan += u.fiyat; }
-    });
-
-    document.getElementById('statToplam').textContent = para(toplam);
-    document.getElementById('statHarcanan').textContent = para(harcanan);
-    document.getElementById('statKalan').textContent = para(kalan);
-    document.getElementById('statAlinan').textContent = alinan;
-    document.getElementById('statBekleyen').textContent = urunler.length - alinan;
-    document.getElementById('productCount').textContent = urunler.length + ' ürün';
-
-    var pct = urunler.length > 0 ? Math.round((alinan / urunler.length) * 100) : 0;
-    document.getElementById('progressPct').textContent = pct + '%';
-    setTimeout(function() {
-      document.getElementById('progressFill').style.width = pct + '%';
-    }, 100);
-
-    if (pct === 0) {
-      document.getElementById('progressLeft').textContent = 'Henüz başlamadın!';
-    } else if (pct === 100) {
-      document.getElementById('progressLeft').textContent = 'Her şey tamam! 🎉';
-    } else {
-      document.getElementById('progressLeft').textContent = alinan + ' ürün alındı';
-    }
-
-    var grid = document.getElementById('productsGrid');
-    grid.innerHTML = '';
-    urunler.forEach(function(u, idx) {
-      var card = document.createElement('div');
-      card.className = 'product-card' + (u.durum === 'Alındı' ? ' alindi' : '');
-
-      var imgHtml = u.gorsel
-        ? '<img class="product-img" src="' + u.gorsel + '" alt="' + u.ad + '" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">' +
-          '<div class="product-img-placeholder" style="display:none">' + emojiSec(u.ad) + '</div>'
-        : '<div class="product-img-placeholder">' + emojiSec(u.ad) + '</div>';
-
-      var linkHtml = u.link
-        ? '<a class="product-link" href="' + u.link + '" target="_blank">🔗 Linke git</a>'
-        : '';
-
-      // Görsel varsa "Değiştir", yoksa "Görsel Ekle" butonu
-      var gorselButon = u.gorsel
-        ? '<button class="gorsel-degistir-btn" onclick="gorselSec(' + idx + ')">🖼 Görseli değiştir</button>'
-        : '<button class="gorsel-ekle-btn" onclick="gorselSec(' + idx + ')">📷 Görsel ekle</button>';
-
-      card.innerHTML = imgHtml +
-        '<div class="product-body">' +
-          '<div class="product-name">' + u.ad + '</div>' +
-          '<div class="product-footer">' +
-            '<div class="product-price">' + para(u.fiyat) + '</div>' +
-            '<span class="product-status status-' + (u.durum === 'Alındı' ? 'alindi' : 'alinmadi') + '">' + u.durum + '</span>' +
-          '</div>' +
-          linkHtml +
-          gorselButon +
-        '</div>';
-
-      grid.appendChild(card);
-    });
-
-    // Tarih
-    document.getElementById('lastUpdated').textContent = 'Güncellendi: ' + new Date().toLocaleDateString('tr-TR');
-
-    // JSON alanını da güncelle
-    document.getElementById('jsonInput').value = JSON.stringify(urunler, null, 2);
-  }
-
-  function toggleEdit() {
-    var panel = document.getElementById('editPanel');
-    panel.classList.toggle('open');
-    if (panel.classList.contains('open')) {
-      urunListesiGuncelle();
-    }
-  }
-
-  // Sekme değiştir
-  function sekmeAc(id, btn) {
-    document.querySelectorAll('.panel-icerik').forEach(function(el) { el.classList.remove('aktif'); });
-    document.querySelectorAll('.panel-tab').forEach(function(el) { el.classList.remove('aktif'); });
-    document.getElementById('sekme-' + id).classList.add('aktif');
-    btn.classList.add('aktif');
-    if (id === 'listele') urunListesiGuncelle();
-  }
-
-  // Düzenlenebilir ürün listesini render et
-  function urunListesiGuncelle() {
-    var liste = document.getElementById('urunListesi');
-    if (urunler.length === 0) {
-      liste.innerHTML = '<p style="color:var(--muted);font-size:0.88rem;">Henüz ürün yok.</p>';
-      return;
-    }
-    liste.innerHTML = urunler.map(function(u, idx) {
-      var durumClass = u.durum === 'Alındı' ? 'status-alindi' : 'status-alinmadi';
-      return '<div class="urun-satir">' +
-        '<span class="urun-satir-ad">' + u.ad + '</span>' +
-        '<span class="urun-satir-fiyat">' + para(u.fiyat) + '</span>' +
-        '<span class="urun-satir-durum product-status ' + durumClass + '" ' +
-          'onclick="durumToggle(' + idx + ')" style="cursor:pointer" title="Durumu değiştir">' +
-          u.durum + '</span>' +
-        '<button class="urun-satir-sil" onclick="urunSil(' + idx + ')" title="Sil">🗑</button>' +
-      '</div>';
-    }).join('');
-  }
-
-  // Yeni ürün ekle (formdan)
-  function urunEkle() {
-    var ad = document.getElementById('yeniAd').value.trim();
-    var fiyat = parseFloat(document.getElementById('yeniFiyat').value) || 0;
-    var durum = document.getElementById('yeniDurum').value;
-    var link = document.getElementById('yeniLink').value.trim();
-    var gorselInput = document.getElementById('yeniGorsel');
-
-    if (!ad) { alert('Ürün adı boş olamaz!'); return; }
-
-    function kaydetVeTemizle(gorselData) {
-      urunler.push({ ad: ad, fiyat: fiyat, durum: durum, link: link, gorsel: gorselData || '' });
-      veriKaydet(urunler).then(function() {
-        render();
-        // Formu temizle
-        document.getElementById('yeniAd').value = '';
-        document.getElementById('yeniFiyat').value = '';
-        document.getElementById('yeniLink').value = '';
-        document.getElementById('yeniGorsel').value = '';
-        document.getElementById('editPanel').classList.remove('open');
-      });
-    }
-
-    // Görsel seçildiyse base64'e çevir
-    if (gorselInput.files && gorselInput.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(ev) { kaydetVeTemizle(ev.target.result); };
-      reader.readAsDataURL(gorselInput.files[0]);
-    } else {
-      kaydetVeTemizle('');
-    }
-  }
-
-  // Ürün sil
-  function urunSil(idx) {
-    if (!confirm('"' + urunler[idx].ad + '" silinsin mi?')) return;
-    urunler.splice(idx, 1);
-    veriKaydet(urunler).then(function() {
-      render();
-      urunListesiGuncelle();
-    });
-  }
-
-  // Durum değiştir (listeden tıkla)
-  function durumToggle(idx) {
-    urunler[idx].durum = urunler[idx].durum === 'Alındı' ? 'Alınmadı' : 'Alındı';
-    veriKaydet(urunler).then(function() {
-      render();
-      urunListesiGuncelle();
-    });
-  }
-
-  // Görsel seçme — karttan
-  function gorselSec(idx) {
-    var input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = function(e) {
-      var dosya = e.target.files[0];
-      if (!dosya) return;
-      var reader = new FileReader();
-      reader.onload = function(ev) {
-        urunler[idx].gorsel = ev.target.result;
-        veriKaydet(urunler).then(function() { render(); });
-      };
-      reader.readAsDataURL(dosya);
-    };
-    input.click();
-  }
-
-  // İlk yükleme — Firebase'den çek
-  veriYukle();
 </script>
 </body>
 </html>
