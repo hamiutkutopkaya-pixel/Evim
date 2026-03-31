@@ -257,7 +257,7 @@
       .catch(function() { document.getElementById('lastUpdated').textContent = 'Bağlantı hatası!'; });
   }
   function veriKaydet(kat) {
-    return fetch(FIREBASE_URL + '/' + kat + '.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(veriler[kat]) });
+    return fetch(FIREBASE_URL + '/' + (kat === 'cave' ? 'urunler' : kat) + '.json',, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(veriler[kat]) });
   }
   function kategoriAc(kat, btn) {
     aktifKategori = kat;
